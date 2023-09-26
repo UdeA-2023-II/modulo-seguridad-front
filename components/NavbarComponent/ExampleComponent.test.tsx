@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import { ExampleComponent } from './NavBar';
 
 describe('ExampleComponentTests', () => {
   const mockProps = {
