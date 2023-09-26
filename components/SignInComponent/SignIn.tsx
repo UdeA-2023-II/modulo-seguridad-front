@@ -34,9 +34,8 @@ const SignIn = () => {
             border: 'solid',
             borderColor: 'white',
             borderRadius: 5,
-            paddingX: 5,
-            paddingY: 7,
-            boxShadow: 10,
+            paddingX: 6,
+            paddingY: 2, 
           }}
         >
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
