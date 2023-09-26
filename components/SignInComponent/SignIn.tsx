@@ -36,11 +36,13 @@ const SignIn = () => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            border: 'solid',
+            borderColor: 'gray',
+            borderRadius: 5,
+            paddingX: 6,
+            paddingY: 2, 
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            
-          </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
