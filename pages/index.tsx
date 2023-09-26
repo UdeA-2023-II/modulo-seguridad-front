@@ -1,11 +1,16 @@
 import {SignIn} from '../components/SignInComponent/SignIn';
+import {NavBar} from '../components/NavbarComponent/Navbar';
 
-
-const Home = () => {
+const Home = () => 
+{
   return (
-    <main className='flex h-screen w-full items-center justify-center'>
-      <SignIn/>
-    </main>
+    <div>
+      <NavBar/>
+      <main className='flex h-screen w-full items-center justify-center'>
+        <SignIn/>
+      </main>
+    </div>
+    
   );
 };
 
