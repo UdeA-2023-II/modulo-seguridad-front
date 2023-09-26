@@ -1,9 +1,10 @@
-import { ExampleComponent } from '@/components/ExampleComponent';
+import {SignIn} from '../components/SignInComponent/SignIn';
+
 
 const Home = () => {
   return (
     <main className='flex h-screen w-full items-center justify-center'>
-      <ExampleComponent text='Welcome to CodeF@ctory' />
+      <SignIn/>
     </main>
   );
 };
