@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Typography } from '@mui/material';
 
 
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -37,17 +38,26 @@ const SignIn = () => {
           }}
         >
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} className="block text-center mx-auto">
-            <span className="block text-center mx-auto">Usuario</span> {/* Aplica 'block' y 'text-center' para centrar */}
+            <Typography
+              variant='h3'
+              component='h3'
+              fontSize='20px'
+              textAlign='center'>¿Cual es tu usuario o correo electrónico?</Typography>
             <TextField
               margin="normal"
               required
               fullWidth
               id="email"
-              label="¿Cuál es tu usuario o correo electrónico?"
+              label="Ingresa tu usuario o email"
               name="email"
               autoComplete="email"
             />
-            <span className='text-center'>Contraseña</span> {/* Aplica 'block' y 'text-center' para centrar */}
+            <Typography
+              variant='h3'
+              component='h3'
+              fontSize='20px'
+              textAlign='center'
+              paddingTop='20px'>Contraseña</Typography>
             <TextField
               margin="normal"
               required
@@ -68,7 +78,7 @@ const SignIn = () => {
               INGRESAR
             </Button>
             <Grid container>
-              <Grid item xs={12}>
+              <Grid item xs={12} textAlign='center'>
                 <Link href="/" variant="body2">
                   {"¿Olvidaste tu contraseña?"}
                 </Link>
