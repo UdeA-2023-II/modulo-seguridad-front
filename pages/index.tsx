@@ -1,12 +1,12 @@
 import {SignIn} from '../components/SignInComponent/SignIn';
-import {NavBar} from '../components/NavbarComponent/Navbar';
+import {NavBar} from '../components/NavbarComponent/NavBar';
 
 const Home = () => 
 {
   return (
     <div>
       <NavBar/>
-      <main className='flex h-screen w-full items-center justify-center'>
+      <main className=''>
         <SignIn/>
       </main>
     </div>
