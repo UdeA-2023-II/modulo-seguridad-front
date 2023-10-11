@@ -12,11 +12,14 @@ import Box from '@mui/material/Box';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Typography } from '@mui/material';
+import { Typography,Alert , AlertTitle } from '@mui/material';
 
 const defaultTheme = createTheme();
 
 const SignIn = () => {
+
+  const [showAlert, setShowAlert] = useState(false);
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -37,10 +40,12 @@ const SignIn = () => {
 
         const isValidCredentials = users.some((user) => user.mail === email && user.password === password);
 
-        if (isValidCredentials) {
-          console.log('Inicio de sesión exitoso');
+        if (isValidCredentials) 
+        {
+          console.error('Credenciales correctas');
         } else {
           console.error('Credenciales incorrectas');
+          setShowAlert(true);
         }
       } else {
         console.error('Error al obtener datos de la API');
@@ -52,8 +57,16 @@ const SignIn = () => {
 
   return (
     <ThemeProvider theme={defaultTheme}>
+      
       <Container component="main" maxWidth="xs" className='content-center'>
+        
         <CssBaseline />
+        {showAlert && (
+            <Alert severity="error" onClose={() => setShowAlert(false)}>
+            <AlertTitle>Error</AlertTitle>
+            <strong>¡Usuario o contraseña incorrectos, Por favor, inténtelo de nuevo!</strong>
+          </Alert>
+          )}
         <Box
           sx={{
             marginTop: 8,
@@ -66,10 +79,11 @@ const SignIn = () => {
             paddingX: 5,
             paddingY: 7,
             boxShadow: 10,
-          }} 
+          }}
         >
+          
           <form onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} className="block text-center mx-auto">
-          <Typography
+            <Typography
               variant='h3'
               component='h3'
               fontSize='20px'
