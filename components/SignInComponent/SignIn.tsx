@@ -12,6 +12,7 @@ import Box from '@mui/material/Box';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Typography } from '@mui/material';
 
 const defaultTheme = createTheme();
 
@@ -65,10 +66,14 @@ const SignIn = () => {
             paddingX: 5,
             paddingY: 7,
             boxShadow: 10,
-          }}
+          }} 
         >
           <form onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} className="block text-center mx-auto">
-            <span className="block text-center mx-auto">Usuario</span>
+          <Typography
+              variant='h3'
+              component='h3'
+              fontSize='20px'
+              textAlign='center'>¿Cual es tu usuario o correo electrónico?</Typography>
             <TextField
               margin="normal"
               required
@@ -78,7 +83,12 @@ const SignIn = () => {
               name="email"
               autoComplete="email"
             />
-            <span className='text-center'>Contraseña</span>
+            <Typography
+              variant='h3'
+              component='h3'
+              fontSize='20px'
+              textAlign='center'
+              paddingTop='20px'>Contraseña</Typography>
             <TextField
               margin="normal"
               required
