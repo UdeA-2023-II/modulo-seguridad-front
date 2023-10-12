@@ -1,7 +1,8 @@
 import { NavBar } from '../components/NavbarComponent/NavBar';
 import { PersistentDrawerLeft } from '../components/ExampleComponent2/Sidebar'
 
-const Home = () => {
+const Dashboard = () => 
+{
     return (
         <div>
            
@@ -13,4 +14,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default Dashboard;

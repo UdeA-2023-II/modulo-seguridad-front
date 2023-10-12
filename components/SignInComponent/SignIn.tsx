@@ -12,10 +12,13 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Typography } from '@mui/material';
 import Modal from '@mui/material/Modal';
 import ErrorIcon from '@mui/icons-material/Error';
+import { useRouter } from 'next/router'; 
 
 const defaultTheme = createTheme();
 
-const SignIn = () => {
+const SignIn = () =>
+ {
+  const router = useRouter();
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState('');
 
@@ -40,6 +43,7 @@ const SignIn = () => {
         const isValidCredentials = users.some((user) => user.mail === email && user.password === password);
 
         if (isValidCredentials) {
+          router.push('dashboard');
           console.log('Credenciales correctas');
           // Aquí puedes redirigir al usuario a la página principal o realizar alguna otra acción
         } else {
