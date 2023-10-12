@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { ExampleComponent2 } from '.';
+import { ExampleComponent2 } from './Sidebar';
 
 describe('ExampleComponentTests', () => {
   beforeEach(() => {
