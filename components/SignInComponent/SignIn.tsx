@@ -1,25 +1,23 @@
 import * as React from 'react';
 import { useState } from 'react';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Typography,Alert , AlertTitle } from '@mui/material';
+import { Typography } from '@mui/material';
+import Modal from '@mui/material/Modal';
 
 const defaultTheme = createTheme();
 
 const SignIn = () => {
-
-  const [showAlert, setShowAlert] = useState(false);
-
+  const [showModal, setShowModal] = useState(false);
+  const [error, setError] = useState('');
+  
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -40,12 +38,12 @@ const SignIn = () => {
 
         const isValidCredentials = users.some((user) => user.mail === email && user.password === password);
 
-        if (isValidCredentials) 
-        {
-          console.error('Credenciales correctas');
+        if (isValidCredentials) {
+          console.log('Credenciales correctas');
+          // Aquí puedes redirigir al usuario a la página principal o realizar alguna otra acción
         } else {
-          console.error('Credenciales incorrectas');
-          setShowAlert(true);
+          setError('¡Usuario o contraseña incorrectos, Por favor, inténtelo de nuevo!');
+          setShowModal(true);
         }
       } else {
         console.error('Error al obtener datos de la API');
@@ -55,18 +53,16 @@ const SignIn = () => {
     }
   };
 
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setError('');
+  };
+
   return (
     <ThemeProvider theme={defaultTheme}>
-      
       <Container component="main" maxWidth="xs" className='content-center'>
-        
         <CssBaseline />
-        {showAlert && (
-            <Alert severity="error" onClose={() => setShowAlert(false)}>
-            <AlertTitle>Error</AlertTitle>
-            <strong>¡Usuario o contraseña incorrectos, Por favor, inténtelo de nuevo!</strong>
-          </Alert>
-          )}
+        
         <Box
           sx={{
             marginTop: 8,
@@ -81,13 +77,12 @@ const SignIn = () => {
             boxShadow: 10,
           }}
         >
-          
           <form onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} className="block text-center mx-auto">
             <Typography
               variant='h3'
               component='h3'
               fontSize='20px'
-              textAlign='center'>¿Cual es tu usuario o correo electrónico?</Typography>
+              textAlign='center'>¿Cuál es tu usuario o correo electrónico?</Typography>
             <TextField
               margin="normal"
               required
@@ -131,9 +126,40 @@ const SignIn = () => {
             </Grid>
           </Grid>
         </Box>
+        
+        {/* Modal */}
+        <Modal
+          open={showModal}
+          onClose={handleCloseModal}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              bgcolor: 'background.paper',
+              boxShadow: 24,
+              p: 4,
+            }}
+          >
+            <Typography variant="h6" component="h2" id="modal-modal-title">
+              Error
+            </Typography>
+            <Typography variant="body2" id="modal-modal-description" sx={{ mt: 2 }}>
+              {error}
+            </Typography>
+            <Button onClick={handleCloseModal} variant="contained" color="primary" sx={{ mt: 2 }}>
+              Aceptar
+            </Button>
+          </Box>
+        </Modal>
       </Container>
     </ThemeProvider>
   );
 }
 
 export { SignIn };
+
