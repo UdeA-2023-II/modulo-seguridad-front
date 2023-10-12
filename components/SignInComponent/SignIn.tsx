@@ -11,13 +11,14 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Typography } from '@mui/material';
 import Modal from '@mui/material/Modal';
+import ErrorIcon from '@mui/icons-material/Error';
 
 const defaultTheme = createTheme();
 
 const SignIn = () => {
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState('');
-  
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -27,7 +28,7 @@ const SignIn = () => {
 
     try {
       const response = await fetch('https://6513538b8e505cebc2e9c6bc.mockapi.io/api/v1/users', {
-        method: 'GET', 
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -62,7 +63,7 @@ const SignIn = () => {
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs" className='content-center'>
         <CssBaseline />
-        
+
         <Box
           sx={{
             marginTop: 8,
@@ -126,13 +127,14 @@ const SignIn = () => {
             </Grid>
           </Grid>
         </Box>
-        
+
         {/* Modal */}
         <Modal
           open={showModal}
           onClose={handleCloseModal}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
+          rounded-xl
         >
           <Box
             sx={{
@@ -140,24 +142,70 @@ const SignIn = () => {
               top: '50%',
               left: '50%',
               transform: 'translate(-50%, -50%)',
-              bgcolor: 'background.paper',
+              bgcolor: '#FFBBBB',
               boxShadow: 24,
+              alignItems: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              width: '500px',
+              borderRadius: '20px',
               p: 4,
             }}
           >
-            <Typography variant="h6" component="h2" id="modal-modal-title">
-              Error
-            </Typography>
-            <Typography variant="body2" id="modal-modal-description" sx={{ mt: 2 }}>
-              {error}
-            </Typography>
-            <Button onClick={handleCloseModal} variant="contained" color="primary" sx={{ mt: 2 }}>
+
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                marginBottom: '0',
+                width: '400px',
+                height: '100px',
+
+              }}
+            >
+              <Box sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                textAlign: 'center',
+                marginBottom: '25px',
+                height: '60px',
+                paddingTop: '7px',
+                margin: '0'
+              }}>
+                <ErrorIcon sx={{ fontSize: '50px', color: '#551818' }}></ErrorIcon>
+              </Box>
+
+              <Box sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                width: '600px',
+              }}
+              >
+                <Typography variant="h6" component="h2" id="modal-modal-title"
+                  sx={{
+                    fontcolor: '#551818'
+                  }}
+                >
+                  Usuario o contraseña incorrectos.
+                </Typography>
+                <Typography variant="h6" component="h2" id="modal-modal-title"
+                  sx={{
+                    fontcolor: '#551818'
+                  }}
+                >
+                  Por favor, inténtelo de nuevo.
+                </Typography>
+              </Box>
+            </Box>
+
+            <Button onClick={handleCloseModal} variant="contained" sx={{ borderRadius: '10px', mt: 2, bgcolor: '#995757', color: 'black', '&:hover': { backgroundColor: '#8E4141', color: 'white' } }}>
               Aceptar
             </Button>
           </Box>
         </Modal>
       </Container>
-    </ThemeProvider>
+    </ThemeProvider >
   );
 }
 
