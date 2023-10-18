@@ -7,10 +7,11 @@ import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { useRouter } from 'next/router';
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme}) => ({
+})(({ theme }) => ({
   transition: theme.transitions.create(['margin', 'width'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -18,6 +19,11 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 const PersistentDrawerLeft = () => {
+  const router = useRouter();
+
+  const handleBuscarClick = () => {
+    router.push('recoverAccountCode');
+  };
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -29,32 +35,39 @@ const PersistentDrawerLeft = () => {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Box sx={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            border: 'solid',
-            borderColor: 'white',
-            borderRadius: 3,
-            boxShadow: 10,
-          }}>
-        <form style={{margin: "20px"}}>
-          <Typography variant='h2'
-          component='h3'
-          fontSize='30px'
-          textAlign='center'
-          borderBottom='1px solid #ccc'
-          paddingX={10}
-          paddingBottom={2}
-          >Recupera tu cuenta</Typography>
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          border: 'solid',
+          borderColor: 'white',
+          borderRadius: 3,
+          boxShadow: 10,
+        }}
+      >
+        <form style={{ margin: '20px' }}>
           <Typography
-            variant='h3'
-            component='h3'
-            fontSize='20px'
-            paddingY= '20px'
-            paddingX= '10px'>
-            Ingresa tu correo electronico para <br/> buscar tu cuenta:</Typography>
+            variant="h2"
+            component="h3"
+            fontSize="20px"
+            textAlign="center"
+            borderBottom="1px solid #ccc"
+            paddingX={10}
+            paddingBottom={2}
+          >
+            Recupera tu cuenta
+          </Typography>
+          <Typography
+            variant="h3"
+            component="h3"
+            fontSize="20px"
+            paddingY="20px"
+            paddingX="10px"
+          >
+            Ingresa tu correo electrónico para <br /> buscar tu cuenta:
+          </Typography>
           <TextField
             margin="normal"
             required
@@ -64,17 +77,30 @@ const PersistentDrawerLeft = () => {
             name="email"
             autoComplete="email"
           />
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '5px', marginBottom: '10px'}}>
-            <Button type="submit" variant="contained" style={{ background: 'darkgrey', color: '#555' }}>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '20px',
+              marginTop: '5px',
+              marginBottom: '10px',
+            }}
+          >
+            <Button
+              type="button"
+              variant="contained"
+              style={{ background: 'darkgrey', color: '#555' }}
+            >
               CANCELAR
             </Button>
-            <Button type="submit" variant="contained">
+            <Button type="button" variant="contained" onClick={handleBuscarClick}>
               BUSCAR
             </Button>
-          </div> 
+          </div>
         </form>
-      </Box>            
+      </Box>
     </Box>
   );
-}  
-export { PersistentDrawerLeft};
+};
+
+export { PersistentDrawerLeft };

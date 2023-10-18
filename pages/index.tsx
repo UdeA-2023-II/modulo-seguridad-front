@@ -1,16 +1,15 @@
-import {SignIn} from '../components/SignInComponent/SignIn';
-import {NavBar} from '../components/NavbarComponent/NavBar';
+import { SignIn } from '../components/SignInComponent/SignIn';
+import { NavBar } from '../components/NavbarComponent/NavBar';
 
-const Home = () => 
-{
+const Home = () => {
   return (
     <div>
-      <NavBar/>
+      <NavBar />
       <main className=''>
-        <SignIn/>
+        <SignIn />
       </main>
     </div>
-    
+
   );
 };
 
