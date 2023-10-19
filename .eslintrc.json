@@ -29,7 +29,10 @@
     "import"
   ],
   "rules": {
-    "func-style": ["error", "expression"],
+    "func-style": [
+      "error",
+      "expression"
+    ],
     "react/function-component-definition": [
       "error",
       {
@@ -41,26 +44,41 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "@typescript-eslint/no-unused-vars": "error",
-    "no-console": "error",
+    "no-console": 0,
     "prefer-arrow-callback": "error",
     "jsx-a11y/anchor-is-valid": [
       "error",
       {
-        "components": ["Link"],
-        "specialLink": ["hrefLeft", "hrefRight"],
-        "aspects": ["invalidHref", "preferButton"]
+        "components": [
+          "Link"
+        ],
+        "specialLink": [
+          "hrefLeft",
+          "hrefRight"
+        ],
+        "aspects": [
+          "invalidHref",
+          "preferButton"
+        ]
       }
     ],
     "no-restricted-imports": [
       "error",
       {
-        "patterns": ["..*"]
+        "patterns": [
+          "./.*"
+        ]
       }
     ]
   },
   "overrides": [
     {
-      "files": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
+      "files": [
+        "**/*.js",
+        "**/*.jsx",
+        "**/*.ts",
+        "**/*.tsx"
+      ],
       "excludedFiles": "pages/**",
       "rules": {
         "import/no-default-export": "error"

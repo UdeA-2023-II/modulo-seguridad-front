@@ -1,12 +1,11 @@
-import { PersistentDrawerLeft } from '../components/ExampleComponent3/RecoverAccount'
+import { PasswordRecoveryComponent } from '../components/password-recovery/PasswordRecoveryComponent'
 
-const RecoverAccount = () => 
-{
+const RecoverAccount = () => {
     return (
         <div>
-           
+
             <main className=''>
-                < PersistentDrawerLeft />
+                < PasswordRecoveryComponent />
             </main>
         </div>
 

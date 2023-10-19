@@ -1,11 +1,11 @@
-import { PersistentDrawerLeft } from '../components/ExampleComponent2/Sidebar'
+import { SidebarComponent } from '../components/sidebar/SidebarComponent'
 
 const Dashboard = () => {
     return (
         <div>
 
             <main className=''>
-                < PersistentDrawerLeft />
+                < SidebarComponent />
             </main>
         </div>
 

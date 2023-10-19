@@ -12,12 +12,11 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Typography } from '@mui/material';
 import Modal from '@mui/material/Modal';
 import ErrorIcon from '@mui/icons-material/Error';
-import { useRouter } from 'next/router'; 
+import { useRouter } from 'next/router';
 
 const defaultTheme = createTheme();
 
-const SignIn = () =>
- {
+const SignIn = () => {
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState('');
@@ -82,7 +81,7 @@ const SignIn = () =>
             boxShadow: 10,
           }}
         >
-          <form onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} className="block text-center mx-auto">
+          <form onSubmit={handleSubmit} noValidate className="block text-center mx-auto">
             <Typography
               variant='h3'
               component='h3'

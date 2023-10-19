@@ -1,11 +1,11 @@
-import { PersistentDrawerLeft } from '../components/ExampleComponent3/MessagePassword'
+import { PasswordRecoveryComponent } from '../components/password-recovery/PasswordRecoveryComponent'
 
 const MessagePassword = () => {
     return (
         <div>
 
             <main className=''>
-                < PersistentDrawerLeft />
+                < PasswordRecoveryComponent />
             </main>
         </div>
 

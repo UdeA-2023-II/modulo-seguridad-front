@@ -1,4 +1,4 @@
-import { RecoverAccountCode } from '../components/RecoverAccountCode/RecoverAccountCodeComponent';
+import { RecoverAccountCode } from '../components/password-reset-code/PasswordResetCodeComponent';
 
 const recoverAccountCode = () => {
     return (
