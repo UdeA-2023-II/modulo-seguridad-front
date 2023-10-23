@@ -60,9 +60,10 @@ const RecoverAccountCode = () => {
                         required
                         fullWidth
                         id="email"
-                        label="correo@email.com"
-                        name="email"
-                        autoComplete="email"
+                        label="Codigo"
+                        name="codigo"
+                        type='number'
+                        
                     />
                     <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '5px', marginBottom: '10px' }}>
                         <Button type="submit" variant="contained" style={{ background: 'darkgrey', color: '#555' }}>
