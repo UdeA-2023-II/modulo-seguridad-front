@@ -16,9 +16,15 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import HistoryIcon from '@mui/icons-material/History';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import SettingsIcon from '@mui/icons-material/Settings';
+import TimeToLeaveIcon from '@mui/icons-material/TimeToLeave';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import DescriptionIcon from '@mui/icons-material/Description';
+import TaxiAlertIcon from '@mui/icons-material/TaxiAlert';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import PaidIcon from '@mui/icons-material/Paid';
 
 const drawerWidth = 240;
 
@@ -111,6 +117,22 @@ const SidebarComponent = () => {
                 <ListItemText primary="Administrador" />
               </ListItemButton>
             </ListItem> 
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <AccountBoxIcon />
+              </ListItemIcon>
+              <ListItemText primary="Usuario" />
+            </ListItemButton>
+          </ListItem> 
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <TimeToLeaveIcon />
+              </ListItemIcon>
+              <ListItemText primary="Socio" />
+            </ListItemButton>
+          </ListItem> 
 
         </List>
         <Divider />
@@ -118,19 +140,75 @@ const SidebarComponent = () => {
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  <AdminPanelSettingsIcon />
+                  <HistoryIcon />
                 </ListItemIcon>
-                <ListItemText primary="Auditoria" />
+                <ListItemText primary="Auditoria"/>
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  <AdminPanelSettingsIcon />
+                  <SettingsIcon />
                 </ListItemIcon>
-                <ListItemText primary="Configuración" />
+                <ListItemText primary="Configuración"/>
               </ListItemButton>
             </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                <DescriptionIcon />
+                </ListItemIcon>
+                <ListItemText primary="PQRS"/>
+              </ListItemButton>
+            </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <DescriptionIcon />
+              </ListItemIcon>
+              <ListItemText primary="Solicitar Servicio" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <TaxiAlertIcon />
+              </ListItemIcon>
+              <ListItemText primary="Aprobar/Rechazar Servicio" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <PeopleAltIcon />
+              </ListItemIcon>
+              <ListItemText primary="Gestión de Socios" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <DescriptionIcon />
+              </ListItemIcon>
+              <ListItemText primary="Clasificación de Socios" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <PaidIcon />
+              </ListItemIcon>
+              <ListItemText primary="Gestion Financiera" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <DescriptionIcon />
+              </ListItemIcon>
+              <ListItemText primary="Gestion Comercial" />
+            </ListItemButton>
+          </ListItem>
         </List>
       </Drawer>
 
