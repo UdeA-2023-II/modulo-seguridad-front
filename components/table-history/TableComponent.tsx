@@ -21,7 +21,7 @@ const columns: GridColDef[] = [
     },
     {
         field: 'duration',
-        headerName: 'Tiempo ',
+        headerName: 'Tiempo(minutos) ',
         type: 'number',
         width: 110,
         editable: true,
@@ -48,12 +48,9 @@ export default function DataGridDemo() {
     React.useEffect(() =>{
         const response = axios.get('https://6558d12ae93ca47020a9c40a.mockapi.io/api/v1/users')
         .then((response) =>{
-            const responseId =response.data.map((sesion, index) => ({
-                ...sesion,
-                id: index + 1,
-            }));
-            setSesiones(responseId)
-            console.log(responseId)
+            
+            setSesiones(response.data)
+            console.log(response.data)
         }) 
     }, [])
 
