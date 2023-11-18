@@ -6,7 +6,7 @@ export default function Dashboard() {
     const backgroundImage = '/images/imagen-landing.jpg';
 
     return (
-        <div className="flex">
+        <div className="flex bg-no-repeat">
             <SidebarComponent />
             <main
                 className="w-3/4 bg-cover bg-no-repeat"

@@ -39,7 +39,7 @@ const PasswordRecoveryComponent = () => {
       }
       emailjs.send('service_0zghs3s', 'template_fvm5kfj', templateParams, 'OaFP-salsm3m01AmE')
         .then(function (response) {
-          alert('SUCCESS')
+          alert('Se ha enviado un codigo al correo suministrado')
         }, function (error) {
           alert('FAILED')
         })
