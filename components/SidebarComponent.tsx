@@ -124,34 +124,40 @@ const SidebarComponent = () => {
         </DrawerHeader>
         <Divider />
         <List>
+          {rol === 'administrador' && (
             <ListItem disablePadding>
-              <ListItemButton>
+              <ListItemButton> 
                 <ListItemIcon>
                 <AdminPanelSettingsIcon/>
                 </ListItemIcon>
                 <ListItemText primary="Administrador" />
               </ListItemButton>
             </ListItem> 
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <AccountBoxIcon />
-              </ListItemIcon>
-              <ListItemText primary="Usuario" />
-            </ListItemButton>
-          </ListItem> 
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <TimeToLeaveIcon />
-              </ListItemIcon>
-              <ListItemText primary="Socio" />
-            </ListItemButton>
-          </ListItem> 
-
+          )}
+          {rol === 'usuario' && (
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <AccountBoxIcon />
+                </ListItemIcon>
+                <ListItemText primary="Usuario" />
+              </ListItemButton>
+            </ListItem> 
+          )}
+          {rol === 'socio' && (
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <TimeToLeaveIcon />
+                </ListItemIcon>
+                <ListItemText primary="Socio" />
+              </ListItemButton>
+            </ListItem> 
+          )}
         </List>
         <Divider />
         <List>
+          {rol === 'administrador' && (
             <ListItem disablePadding onClick={handleTable}>
               <ListItemButton>
                 <ListItemIcon>
@@ -160,6 +166,8 @@ const SidebarComponent = () => {
                 <ListItemText primary="Auditoria"/>
               </ListItemButton>
             </ListItem>
+          )}
+
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
@@ -168,6 +176,7 @@ const SidebarComponent = () => {
                 <ListItemText primary="Configuración"/>
               </ListItemButton>
             </ListItem>
+
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
@@ -176,6 +185,8 @@ const SidebarComponent = () => {
                 <ListItemText primary="PQRS"/>
               </ListItemButton>
             </ListItem>
+
+
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -184,14 +195,18 @@ const SidebarComponent = () => {
               <ListItemText primary="Solicitar Servicio" />
             </ListItemButton>
           </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <TaxiAlertIcon />
-              </ListItemIcon>
-              <ListItemText primary="Aprobar/Rechazar Servicio" />
-            </ListItemButton>
-          </ListItem>
+
+          {rol === 'socio' && (
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <TaxiAlertIcon />
+                </ListItemIcon>
+                <ListItemText primary="Aprobar/Rechazar Servicio" />
+              </ListItemButton>
+            </ListItem>
+          )}
+
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -200,6 +215,8 @@ const SidebarComponent = () => {
               <ListItemText primary="Gestión de Socios" />
             </ListItemButton>
           </ListItem>
+
+
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -208,6 +225,8 @@ const SidebarComponent = () => {
               <ListItemText primary="Clasificación de Socios" />
             </ListItemButton>
           </ListItem>
+
+
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -216,6 +235,8 @@ const SidebarComponent = () => {
               <ListItemText primary="Gestion Financiera" />
             </ListItemButton>
           </ListItem>
+
+
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -224,6 +245,7 @@ const SidebarComponent = () => {
               <ListItemText primary="Gestion Comercial" />
             </ListItemButton>
           </ListItem>
+
         </List>
       </Drawer>
 
