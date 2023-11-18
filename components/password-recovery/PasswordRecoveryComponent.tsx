@@ -8,6 +8,7 @@ import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/router';
+import emailjs from '@emailjs/browser'
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -22,6 +23,20 @@ const PasswordRecoveryComponent = () => {
   const router = useRouter();
 
   const handleBuscarClick = () => {
+  try{  
+    let templateParams = {
+      code: 
+      correo:
+    }
+    emailjs.send('service_0zghs3s', 'template_fvm5kfj', templateParams,'OaFP-salsm3m01AmE')
+    .then(function (response: any){
+      alert('SUCCESS')
+    }, function(error: any){
+      alert('FAILED')
+    })
+  } catch(error){
+    console.log('Error')
+  }
     router.push('recoverAccountCode');
   };
 
@@ -68,6 +83,7 @@ const PasswordRecoveryComponent = () => {
           >
             Ingresa tu correo electrónico para <br /> buscar tu cuenta:
           </Typography>
+
           <TextField
             margin="normal"
             required
