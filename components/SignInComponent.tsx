@@ -13,15 +13,19 @@ import { Typography } from '@mui/material';
 import Modal from '@mui/material/Modal';
 import ErrorIcon from '@mui/icons-material/Error';
 import { useRouter } from 'next/router';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState} from '../redux/store';
-import { setStringValue } from '../redux/slice'; 
+import { useDispatch, useSelector } from 'react-redux';
+import { setSelectedItem } from '../redux/actions';
+
 
 const defaultTheme = createTheme();
+interface RootState {
+  selectedItem: string; // Asegúrate de que el tipo coincida con el estado en tu aplicación
+  // ... otros estados ...
+}
 
 const SignIn = () => {
+  const selectedItem = useSelector((state:RootState) => state.selectedItem); // Accede al estado global
   const dispatch = useDispatch();
-  const stringValue = useSelector((state: RootState) => state.stringValue);
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState('');
@@ -49,7 +53,7 @@ const SignIn = () => {
           if (user.mail === email && user.password === password) {
             // Guarda el rol en el estado
             setRole(user.role);
-            dispatch(setStringValue(user.role));
+            dispatch(setSelectedItem(user.role));
             console.log('Credenciales correctas');
             console.log('Rol del usuario:', user.role);
             router.push('dashboard');

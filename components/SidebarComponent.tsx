@@ -30,9 +30,13 @@ import SortIcon from '@mui/icons-material/Sort';
 import SendToMobileIcon from '@mui/icons-material/SendToMobile';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
-import { RootState } from '../redux/store';
 
 const drawerWidth = 240;
+
+interface RootState {
+  selectedItem: string;
+  // ... otros estados ...
+}
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -65,7 +69,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 const SidebarComponent = () => {
-  const rol = useSelector((state: RootState) => state.stringValue);// variable Global
+  const rol = useSelector((state: RootState) => state.selectedItem); // Variable Global
   const router = useRouter();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -81,7 +85,6 @@ const SidebarComponent = () => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
