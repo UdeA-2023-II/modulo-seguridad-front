@@ -28,6 +28,7 @@ import PaidIcon from '@mui/icons-material/Paid';
 import SellIcon from '@mui/icons-material/Sell';
 import SortIcon from '@mui/icons-material/Sort';
 import SendToMobileIcon from '@mui/icons-material/SendToMobile';
+import { useRouter } from 'next/router';
 
 const drawerWidth = 240;
 
@@ -62,11 +63,16 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 const SidebarComponent = () => {
+  const router = useRouter();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
+  };
+
+  const handleTable = () => {
+    router.push('auditoria-page');;
   };
 
   const handleDrawerClose = () => {
@@ -140,7 +146,7 @@ const SidebarComponent = () => {
         </List>
         <Divider />
         <List>
-            <ListItem disablePadding>
+            <ListItem disablePadding onClick={handleTable}>
               <ListItemButton>
                 <ListItemIcon>
                   <HistoryIcon />
