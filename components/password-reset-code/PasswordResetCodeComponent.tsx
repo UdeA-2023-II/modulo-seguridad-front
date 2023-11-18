@@ -7,6 +7,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { useRouter } from 'next/router';
 
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
@@ -17,7 +18,13 @@ const AppBar = styled(MuiAppBar, {
     }),
 }));
 
+
 const RecoverAccountCode = () => {
+    const router = useRouter();
+
+    const handleContinuarClick = () => {
+        router.push('RestorePasswordComponent');
+      };
 
     return (
         <Box sx={{ display: 'flex' }}>
@@ -65,11 +72,11 @@ const RecoverAccountCode = () => {
                         type='number'
                         
                     />
-                    <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '5px', marginBottom: '10px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '10px', marginBottom: '5px' }}>
                         <Button type="submit" variant="contained" style={{ background: 'darkgrey', color: '#555' }}>
                             CANCELAR
                         </Button>
-                        <Button type="submit" variant="contained">
+                        <Button type="submit" variant="contained" onClick={handleContinuarClick}>
                             CONTINUAR
                         </Button>
                     </div>
