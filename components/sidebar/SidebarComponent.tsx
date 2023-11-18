@@ -18,7 +18,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 const drawerWidth = 240;
 
@@ -103,29 +103,34 @@ const SidebarComponent = () => {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Administrador', 'Cliente', 'Socio'].map((text, index) => (
-            <ListItem key={text} disablePadding>
+            <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <AdminPanelSettingsIcon/>
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary="Administrador" />
               </ListItemButton>
-            </ListItem>
-          ))}
+            </ListItem> 
+
         </List>
         <Divider />
         <List>
-          {['Configuración', 'Historial', 'Opcion 3'].map((text, index) => (
-            <ListItem key={text} disablePadding>
+            <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  <AdminPanelSettingsIcon />
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary="Auditoria" />
               </ListItemButton>
             </ListItem>
-          ))}
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <AdminPanelSettingsIcon />
+                </ListItemIcon>
+                <ListItemText primary="Configuración" />
+              </ListItemButton>
+            </ListItem>
         </List>
       </Drawer>
 
