@@ -149,9 +149,7 @@ const SignIn = () => {
               alignItems: 'center',
             }}
           >
-            <Typography variant="h6" component="h2" sx={{ marginTop: 2 }}>
-              Rol del usuario: {role}
-            </Typography>
+            
           </Box>
         )}
 
