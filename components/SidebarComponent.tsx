@@ -167,7 +167,6 @@ const SidebarComponent = () => {
               </ListItemButton>
             </ListItem>
           )}
-
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
@@ -177,6 +176,7 @@ const SidebarComponent = () => {
               </ListItemButton>
             </ListItem>
 
+          {rol === 'administrador' && (
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
@@ -185,17 +185,17 @@ const SidebarComponent = () => {
                 <ListItemText primary="PQRS"/>
               </ListItemButton>
             </ListItem>
-
-
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <SendToMobileIcon />
-              </ListItemIcon>
-              <ListItemText primary="Solicitar Servicio" />
-            </ListItemButton>
-          </ListItem>
-
+          )}
+          {rol === 'usuario' && (
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <SendToMobileIcon />
+                </ListItemIcon>
+                <ListItemText primary="Solicitar Servicio" />
+              </ListItemButton>
+            </ListItem>
+          )}
           {rol === 'socio' && (
             <ListItem disablePadding>
               <ListItemButton>
@@ -206,46 +206,46 @@ const SidebarComponent = () => {
               </ListItemButton>
             </ListItem>
           )}
-
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <PeopleAltIcon />
-              </ListItemIcon>
-              <ListItemText primary="Gestión de Socios" />
-            </ListItemButton>
-          </ListItem>
-
-
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <SortIcon />
-              </ListItemIcon>
-              <ListItemText primary="Clasificación de Socios" />
-            </ListItemButton>
-          </ListItem>
-
-
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <PaidIcon />
-              </ListItemIcon>
-              <ListItemText primary="Gestion Financiera" />
-            </ListItemButton>
-          </ListItem>
-
-
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <SellIcon />
-              </ListItemIcon>
-              <ListItemText primary="Gestion Comercial" />
-            </ListItemButton>
-          </ListItem>
-
+          {rol === 'administrador' && (
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <PeopleAltIcon />
+                </ListItemIcon>
+                <ListItemText primary="Gestión de Socios" />
+              </ListItemButton>
+            </ListItem>
+          )}
+          {rol !== 'usuario' && (
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <SortIcon />
+                </ListItemIcon>
+                <ListItemText primary="Clasificación de Socios" />
+              </ListItemButton>
+            </ListItem>
+          )}
+          {rol === 'administrador' && (
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <PaidIcon />
+                </ListItemIcon>
+                <ListItemText primary="Gestion Financiera" />
+              </ListItemButton>
+            </ListItem>
+          )}
+          {rol === 'administrador' && (
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <SellIcon />
+                </ListItemIcon>
+                <ListItemText primary="Gestion Comercial" />
+              </ListItemButton>
+            </ListItem>
+          )}
         </List>
       </Drawer>
 
