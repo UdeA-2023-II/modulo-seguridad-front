@@ -48,7 +48,7 @@ const SignIn = () => {
 
       if (response.ok) {
         const users = await response.json();
-
+  
         const isValidCredentials = users.some((user:any) => {
           if (user.mail === email && user.password === password) {
             // Guarda el rol en el estado
