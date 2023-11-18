@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -20,8 +21,10 @@ const AppBar = styled(MuiAppBar, {
 
 const PasswordRecoveryComponent = () => {
   const router = useRouter();
+  const [email, setEmail] = useState('');
 
   const handleBuscarClick = () => {
+    console.log('Correo electrónico ingresado:', email);
     router.push('recoverAccountCode');
   };
 
@@ -76,6 +79,8 @@ const PasswordRecoveryComponent = () => {
             label="correo@email.com"
             name="email"
             autoComplete="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <div
             style={{
