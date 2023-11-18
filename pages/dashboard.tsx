@@ -1,4 +1,4 @@
-import { SidebarComponent } from '@/components/sidebar/SidebarComponent';
+import { SidebarComponent } from '@/components/SidebarComponent';
 import React from 'react';
 
 // eslint-disable-next-line react/function-component-definition
