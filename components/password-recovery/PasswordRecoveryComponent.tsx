@@ -21,24 +21,33 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 const PasswordRecoveryComponent = () => {
+  function generateVerificationCode(): string {
+    const code: string = Math.random().toString(36).substring(2, 8).toUpperCase();
+    return code;
+  }
+
   const router = useRouter();
+
   const [email, setEmail] = useState('');
 
   const handleBuscarClick = () => {
-  try{  
-    let templateParams = {
-      code: 
-      correo:
+    try {
+      const codigo = generateVerificationCode();
+      let templateParams = {
+        code: codigo,
+        correo: email,
+      }
+      emailjs.send('service_0zghs3s', 'template_fvm5kfj', templateParams, 'OaFP-salsm3m01AmE')
+        .then(function (response) {
+          alert('SUCCESS')
+        }, function (error) {
+          alert('FAILED')
+        })
+    } catch (error) {
+      console.log('Error')
     }
-    emailjs.send('service_0zghs3s', 'template_fvm5kfj', templateParams,'OaFP-salsm3m01AmE')
-    .then(function (response: any){
-      alert('SUCCESS')
-    }, function(error: any){
-      alert('FAILED')
-    })
-  } catch(error){
-    console.log('Error')
-  }
+    console.log('Correo electrónico ingresado:', email);
+    console.log('Codigo: ', generateVerificationCode());
     router.push('recoverAccountCode');
   };
 
