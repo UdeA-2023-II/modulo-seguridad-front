@@ -20,6 +20,7 @@ const SignIn = () => {
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState('');
+  const [role, setRole] = useState('');
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -39,13 +40,20 @@ const SignIn = () => {
       if (response.ok) {
         const users = await response.json();
 
-        const isValidCredentials = users.some((user) => user.mail === email && user.password === password);
+        const isValidCredentials = users.some((user) => {
+          if (user.mail === email && user.password === password) {
+            // Guarda el rol en el estado
+            setRole(user.role);
+            console.log('Credenciales correctas');
+            console.log('Rol del usuario:', user.role);
+            router.push('dashboard');
+            // Aquí puedes redirigir al usuario a la página principal o realizar alguna otra acción
+            return true;
+          }
+          return false;
+        });
 
-        if (isValidCredentials) {
-          router.push('dashboard');
-          console.log('Credenciales correctas');
-          // Aquí puedes redirigir al usuario a la página principal o realizar alguna otra acción
-        } else {
+        if (!isValidCredentials) {
           setError('¡Usuario o contraseña incorrectos, Por favor, inténtelo de nuevo!');
           setShowModal(true);
         }
@@ -131,6 +139,22 @@ const SignIn = () => {
           </Grid>
         </Box>
 
+        {/* Elemento para mostrar el rol del usuario */}
+        {role && (
+          <Box
+            sx={{
+              marginTop: 2,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Typography variant="h6" component="h2" sx={{ marginTop: 2 }}>
+              Rol del usuario: {role}
+            </Typography>
+          </Box>
+        )}
+
         {/* Modal */}
         <Modal
           open={showModal}
@@ -155,7 +179,6 @@ const SignIn = () => {
               p: 4,
             }}
           >
-
             <Box
               sx={{
                 display: 'flex',
@@ -163,7 +186,6 @@ const SignIn = () => {
                 marginBottom: '0',
                 width: '400px',
                 height: '100px',
-
               }}
             >
               <Box sx={{
@@ -213,4 +235,3 @@ const SignIn = () => {
 }
 
 export { SignIn };
-
