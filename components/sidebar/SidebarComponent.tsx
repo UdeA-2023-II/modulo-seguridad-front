@@ -25,6 +25,10 @@ import DescriptionIcon from '@mui/icons-material/Description';
 import TaxiAlertIcon from '@mui/icons-material/TaxiAlert';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import PaidIcon from '@mui/icons-material/Paid';
+import SellIcon from '@mui/icons-material/Sell';
+import SortIcon from '@mui/icons-material/Sort';
+import SendToMobileIcon from '@mui/icons-material/SendToMobile';
+import { useRouter } from 'next/router';
 
 const drawerWidth = 240;
 
@@ -59,11 +63,16 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 const SidebarComponent = () => {
+  const router = useRouter();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
+  };
+
+  const handleTable = () => {
+    router.push('auditoria-page');;
   };
 
   const handleDrawerClose = () => {
@@ -137,7 +146,7 @@ const SidebarComponent = () => {
         </List>
         <Divider />
         <List>
-            <ListItem disablePadding>
+            <ListItem disablePadding onClick={handleTable}>
               <ListItemButton>
                 <ListItemIcon>
                   <HistoryIcon />
@@ -164,7 +173,7 @@ const SidebarComponent = () => {
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <DescriptionIcon />
+                <SendToMobileIcon />
               </ListItemIcon>
               <ListItemText primary="Solicitar Servicio" />
             </ListItemButton>
@@ -188,7 +197,7 @@ const SidebarComponent = () => {
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <DescriptionIcon />
+                <SortIcon />
               </ListItemIcon>
               <ListItemText primary="Clasificación de Socios" />
             </ListItemButton>
@@ -204,7 +213,7 @@ const SidebarComponent = () => {
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <DescriptionIcon />
+                <SellIcon />
               </ListItemIcon>
               <ListItemText primary="Gestion Comercial" />
             </ListItemButton>
