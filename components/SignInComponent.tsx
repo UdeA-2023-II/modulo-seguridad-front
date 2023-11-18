@@ -13,10 +13,15 @@ import { Typography } from '@mui/material';
 import Modal from '@mui/material/Modal';
 import ErrorIcon from '@mui/icons-material/Error';
 import { useRouter } from 'next/router';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState} from '../redux/store';
+import { setStringValue } from '../redux/slice'; 
 
 const defaultTheme = createTheme();
 
 const SignIn = () => {
+  const dispatch = useDispatch();
+  const stringValue = useSelector((state: RootState) => state.stringValue);
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState('');
@@ -40,10 +45,11 @@ const SignIn = () => {
       if (response.ok) {
         const users = await response.json();
 
-        const isValidCredentials = users.some((user) => {
+        const isValidCredentials = users.some((user:any) => {
           if (user.mail === email && user.password === password) {
             // Guarda el rol en el estado
             setRole(user.role);
+            dispatch(setStringValue(user.role));
             console.log('Credenciales correctas');
             console.log('Rol del usuario:', user.role);
             router.push('dashboard');
