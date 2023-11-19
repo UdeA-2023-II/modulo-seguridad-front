@@ -1,19 +1,20 @@
 // reducers.ts
 // reducers.ts
 import { SET_SELECTED_ITEM } from './actions';
-import { SET_CODE_VARIABLE } from './actions';
+// reducers.ts
+import { SET_ANOTHER_VARIABLE } from './actions';
 
 const initialState = {
-  globalVariable: '',
-  selectedItem: '', // Agrega la propiedad para el elemento seleccionado
-  codeVariable: '', // Nueva variable global
+  selectedItem: '',
+  anotherVariable: '', // Nueva variable global
+  // ... otros estados ...
 };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_SELECTED_ITEM:
       return { ...state, selectedItem: action.payload };
-    case SET_CODE_VARIABLE:
+    case SET_ANOTHER_VARIABLE:
       return { ...state, anotherVariable: action.payload };
     default:
       return state;
@@ -21,3 +22,4 @@ const rootReducer = (state = initialState, action) => {
 };
 
 export default rootReducer;
+

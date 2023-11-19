@@ -19,14 +19,17 @@ const AppBar = styled(MuiAppBar, {
         duration: theme.transitions.duration.leavingScreen,
     }),
 }));
+
 interface RootState {
-    codeVariable: string;
+    anotherVariable: string;
     // ... otros estados ...
   }
 
+
+
 const RecoverAccountCode = () => {
-    const valorCodigo = "";
-    const code = useSelector((state:RootState) => state.codeVariable);// Varieble a utilizar
+
+    const anotherVariable = useSelector((state:RootState) => state.anotherVariable);
     const router = useRouter();
 
     const handleContinuarClick = () => {
@@ -43,6 +46,7 @@ const RecoverAccountCode = () => {
                     </Typography>
                 </Toolbar>
             </AppBar>
+            
             <Box sx={{
                 position: 'absolute',
                 top: '50%',
@@ -54,6 +58,7 @@ const RecoverAccountCode = () => {
                 boxShadow: 10,
             }}>
                 <form style={{ margin: "20px" }}>
+                    <h1>tu codigo es : {anotherVariable}</h1>
                     <Typography variant='h2'
                         component='h3'
                         fontSize='20px'

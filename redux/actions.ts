@@ -1,5 +1,11 @@
 export const SET_SELECTED_ITEM = 'SET_SELECTED_ITEM';
-export const SET_CODE_VARIABLE = 'SET_CODE_VARIABLE';
+// actions.ts
+export const SET_ANOTHER_VARIABLE = 'SET_ANOTHER_VARIABLE';
+
+export const setAnotherVariable = (value) => ({
+  type: SET_ANOTHER_VARIABLE,
+  payload: value,
+});
 
 
 export const setSelectedItem = (item) => ({
@@ -7,7 +13,3 @@ export const setSelectedItem = (item) => ({
   payload: item,
 });
 
-export const setCodeVariable = (value) => ({
-  type: SET_CODE_VARIABLE,
-  payload: value,
-});
