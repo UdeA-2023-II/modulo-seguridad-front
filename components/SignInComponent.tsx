@@ -11,17 +11,28 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Modal, Typography } from '@mui/material';
 import ErrorIcon from '@mui/icons-material/Error';
+import { Router } from 'react-router-dom';
+import { useRouter } from 'next/router';
+import Dashboard from '@/pages/dashboard';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSelectedItem } from '@/redux/actions';
 
 
 const defaultTheme = createTheme();
 
 const SignIn = () => {
-
+  const dispatch = useDispatch();
+  const router = useRouter()
   const handleCloseModal = () => {
     setShowModal(false);
     setError('');
   };
 
+  const [token, setToken] = ("");
+
+  React.useEffect(() => {
+    sessionStorage.setItem('token', token)
+  }, [token])
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState('');
 
@@ -51,7 +62,13 @@ const SignIn = () => {
       await fetch('http://localhost:8080/api_v1/auth/login', requestOptions)
         .then(response => response.json())
         .then(data => {
-          console.log("Token de inicio de sesión: ", data)
+          setToken(data)
+          if (token == '' || token == null) {
+            setShowModal(true);
+            dispatch(setSelectedItem(data.roles[0]));
+          } else {
+            router.push('dashboard')
+          }
         });
 
     } catch (error) {
