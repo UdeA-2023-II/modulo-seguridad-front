@@ -19,7 +19,7 @@ import { useSelector } from 'react-redux';
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme }) => ({
-  transition: theme.transitions.create(['margin', 'width'], {
+     transition: theme.transitions.create(['margin', 'width'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),

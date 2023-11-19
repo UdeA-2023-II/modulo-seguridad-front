@@ -31,7 +31,13 @@ import SendToMobileIcon from '@mui/icons-material/SendToMobile';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
+<<<<<<< HEAD
 import { Switch } from '@mui/material';
+=======
+import TableComponent from './table-history/TableComponent';
+import { Main } from 'next/document';
+import { Container } from '@mui/material';
+>>>>>>> accd26ccde1ecddeac9e81ecf570d333c4f9df0f
 
 const drawerWidth = 240;
 
@@ -70,6 +76,12 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
+/* const[option, setOption] = React.useState();
+ */
+const content = ((option: any) => {
+  
+});
+
 const SidebarComponent = () => {
   const rol = useSelector((state: RootState) => state.selectedItem); // Variable Global
   const router = useRouter();
@@ -86,15 +98,27 @@ const SidebarComponent = () => {
     setOpen(true);
   };
 
+<<<<<<< HEAD
   // Con esta Función vamos a rediriguir las opciones del dasboard (auditoria, Gestion Financiera ,Gestion Comercial.. entre las otras opciones que están)
   const handleTable = (optionName:string) => {
     router.push(`/${optionName.toLowerCase()}`);
   };
+=======
+  /* const handleTable = () => {
+    router.push('auditoria-page');;
+  }; */
+>>>>>>> accd26ccde1ecddeac9e81ecf570d333c4f9df0f
 
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  
+  const handleChangeAuditoria = () => {
+    
+  };
+
   return (
+    <>
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
@@ -153,7 +177,11 @@ const SidebarComponent = () => {
         <Divider />
         <List>
           {rol === 'administrador' && (
+<<<<<<< HEAD
             <ListItem disablePadding onClick={() => handleTable("auditoria")}>
+=======
+            <ListItem disablePadding onClick={handleChangeAuditoria}>
+>>>>>>> accd26ccde1ecddeac9e81ecf570d333c4f9df0f
               <ListItemButton>
                 <ListItemIcon>
                   <HistoryIcon />
@@ -251,8 +279,13 @@ const SidebarComponent = () => {
           </ListItem>  
         </List>
       </Drawer>
-
+      
     </Box>
+    <Container className='w-full h-auto  overflow-auto flex flex-col items-center content-center mt-32 ' >
+         {/*  <TableComponent/> */}
+       
+    </Container>
+    </>
   );
 }
 export { SidebarComponent };

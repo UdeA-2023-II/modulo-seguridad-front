@@ -1,4 +1,5 @@
 import { SidebarComponent } from '@/components/SidebarComponent';
+import TableComponent from '@/components/table-history/TableComponent';
 import React from 'react';
 import LayoutAuth from '../layout/LayoutAuth';
 
