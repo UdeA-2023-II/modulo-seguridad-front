@@ -23,18 +23,29 @@ const AppBar = styled(MuiAppBar, {
 interface RootState {
     anotherVariable: string;
     // ... otros estados ...
-  }
+}
 
 
 
 const RecoverAccountCode = () => {
 
-    const anotherVariable = useSelector((state:RootState) => state.anotherVariable);
+    const handleChangeCodigo = (event: any) => {
+        setInputValue(event.target.value)
+    }
+
+    const [inputValue, setInputValue] = React.useState('');
+
+    const anotherVariable = useSelector((state: RootState) => state.anotherVariable);
     const router = useRouter();
 
     const handleContinuarClick = () => {
-        router.push('RestorePasswordComponent');
-      };
+
+        if (anotherVariable == inputValue) {
+            console.log("Valor ingresado", inputValue);
+            console.log("Valor enviado al correo", anotherVariable);
+            router.push('recover-password-page')
+        }
+    };
 
     return (
         <Box sx={{ display: 'flex' }}>
@@ -46,7 +57,7 @@ const RecoverAccountCode = () => {
                     </Typography>
                 </Toolbar>
             </AppBar>
-            
+
             <Box sx={{
                 position: 'absolute',
                 top: '50%',
@@ -81,13 +92,13 @@ const RecoverAccountCode = () => {
                         id="codigo"
                         label="Codigo"
                         name="codigo"
-                        value={valorCodigo}
+                        onChange={handleChangeCodigo}
                     />
                     <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '10px', marginBottom: '5px' }}>
                         <Button type="submit" variant="contained" style={{ background: 'darkgrey', color: '#555' }}>
                             CANCELAR
                         </Button>
-                        <Button type="submit" variant="contained" onClick={handleContinuarClick}>
+                        <Button variant="contained" onClick={handleContinuarClick}>
                             CONTINUAR
                         </Button>
                     </div>
