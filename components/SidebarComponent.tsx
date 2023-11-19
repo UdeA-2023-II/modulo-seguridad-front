@@ -28,8 +28,10 @@ import PaidIcon from '@mui/icons-material/Paid';
 import SellIcon from '@mui/icons-material/Sell';
 import SortIcon from '@mui/icons-material/Sort';
 import SendToMobileIcon from '@mui/icons-material/SendToMobile';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
+import { Switch } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -74,12 +76,19 @@ const SidebarComponent = () => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
+  const styles = {
+    title: {
+      flexGrow: 1,
+      textAlign: 'right',
+    },
+  };
   const handleDrawerOpen = () => {
     setOpen(true);
   };
 
-  const handleTable = () => {
-    router.push('auditoria-page');;
+  // Con esta Función vamos a rediriguir las opciones del dasboard (auditoria, Gestion Financiera ,Gestion Comercial.. entre las otras opciones que están)
+  const handleTable = (optionName:string) => {
+    router.push(`/${optionName.toLowerCase()}`);
   };
 
   const handleDrawerClose = () => {
@@ -90,16 +99,7 @@ const SidebarComponent = () => {
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{ mr: 2, ...(open && { display: 'none' }) }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="div" style={styles.title}>
             SSMU
           </Typography>
         </Toolbar>
@@ -115,17 +115,12 @@ const SidebarComponent = () => {
         }}
         variant="persistent"
         anchor="left"
-        open={open}
+        open={true}
       >
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </DrawerHeader>
         <Divider />
         <List>
           {rol === 'administrador' && (
-            <ListItem disablePadding>
+            <ListItem disablePadding >
               <ListItemButton> 
                 <ListItemIcon>
                 <AdminPanelSettingsIcon/>
@@ -135,7 +130,7 @@ const SidebarComponent = () => {
             </ListItem> 
           )}
           {rol === 'usuario' && (
-            <ListItem disablePadding>
+            <ListItem disablePadding >
               <ListItemButton>
                 <ListItemIcon>
                   <AccountBoxIcon />
@@ -145,7 +140,7 @@ const SidebarComponent = () => {
             </ListItem> 
           )}
           {rol === 'socio' && (
-            <ListItem disablePadding>
+            <ListItem disablePadding >
               <ListItemButton>
                 <ListItemIcon>
                   <TimeToLeaveIcon />
@@ -158,7 +153,7 @@ const SidebarComponent = () => {
         <Divider />
         <List>
           {rol === 'administrador' && (
-            <ListItem disablePadding onClick={handleTable}>
+            <ListItem disablePadding onClick={() => handleTable("auditoria")}>
               <ListItemButton>
                 <ListItemIcon>
                   <HistoryIcon />
@@ -167,7 +162,7 @@ const SidebarComponent = () => {
               </ListItemButton>
             </ListItem>
           )}
-            <ListItem disablePadding>
+            <ListItem disablePadding onClick={() => handleTable("configuracion")}>
               <ListItemButton>
                 <ListItemIcon>
                   <SettingsIcon />
@@ -177,7 +172,7 @@ const SidebarComponent = () => {
             </ListItem>
 
           {rol === 'administrador' && (
-            <ListItem disablePadding>
+            <ListItem disablePadding onClick={() => handleTable("pqr")}>
               <ListItemButton>
                 <ListItemIcon>
                 <DescriptionIcon />
@@ -187,7 +182,7 @@ const SidebarComponent = () => {
             </ListItem>
           )}
           {rol === 'usuario' && (
-            <ListItem disablePadding>
+            <ListItem disablePadding onClick={() => handleTable("servicio")}>
               <ListItemButton>
                 <ListItemIcon>
                   <SendToMobileIcon />
@@ -197,7 +192,7 @@ const SidebarComponent = () => {
             </ListItem>
           )}
           {rol === 'socio' && (
-            <ListItem disablePadding>
+            <ListItem disablePadding onClick={() => handleTable("validar")}>
               <ListItemButton>
                 <ListItemIcon>
                   <TaxiAlertIcon />
@@ -207,7 +202,7 @@ const SidebarComponent = () => {
             </ListItem>
           )}
           {rol === 'administrador' && (
-            <ListItem disablePadding>
+            <ListItem disablePadding onClick={() => handleTable("socios")}>
               <ListItemButton>
                 <ListItemIcon>
                   <PeopleAltIcon />
@@ -217,7 +212,7 @@ const SidebarComponent = () => {
             </ListItem>
           )}
           {rol !== 'usuario' && (
-            <ListItem disablePadding>
+            <ListItem disablePadding onClick={() => handleTable("clasificacion")}>
               <ListItemButton>
                 <ListItemIcon>
                   <SortIcon />
@@ -227,7 +222,7 @@ const SidebarComponent = () => {
             </ListItem>
           )}
           {rol === 'administrador' && (
-            <ListItem disablePadding>
+            <ListItem disablePadding onClick={() => handleTable("financiera")}>
               <ListItemButton>
                 <ListItemIcon>
                   <PaidIcon />
@@ -237,7 +232,7 @@ const SidebarComponent = () => {
             </ListItem>
           )}
           {rol === 'administrador' && (
-            <ListItem disablePadding>
+            <ListItem disablePadding onClick={() => handleTable("comercial")}>
               <ListItemButton>
                 <ListItemIcon>
                   <SellIcon />
@@ -246,6 +241,14 @@ const SidebarComponent = () => {
               </ListItemButton>
             </ListItem>
           )}
+          <ListItem disablePadding onClick={() => handleTable("")}>
+            <ListItemButton>
+              <ListItemIcon>
+                <LogoutIcon/>
+              </ListItemIcon>
+              <ListItemText primary="logout" />
+            </ListItemButton>
+          </ListItem>  
         </List>
       </Drawer>
 
