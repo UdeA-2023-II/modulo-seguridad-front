@@ -40,7 +40,7 @@ const SignIn = () => {
 
       console.log("Credenciales enviadas a Backend: ", requestOptions.body)
 
-      await fetch('https://localhost:8080/api_v1/auth', requestOptions)
+      await fetch('http://localhost:8080/api_v1/auth/login', requestOptions)
         .then(response => response.json())
         .then(data => {
           console.log("Token de inicio de sesión: ", data)
