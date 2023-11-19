@@ -141,7 +141,7 @@ const SignIn = () => {
           </form>
           <Grid container>
             <Grid item xs={12}>
-              <Link href="RecoverAccountP">
+              <Link href="recoverAccountP">
                 {"¿Olvidaste tu contraseña?"}
               </Link>
             </Grid>

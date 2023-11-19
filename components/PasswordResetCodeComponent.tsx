@@ -26,7 +26,7 @@ interface RootState {
 
 
 
-const RecoverAccountCode = () => {
+const PasswordResetCode = () => {
 
     const anotherVariable = useSelector((state:RootState) => state.anotherVariable);
     const router = useRouter();
@@ -96,4 +96,4 @@ const RecoverAccountCode = () => {
         </Box>
     );
 }
-export { RecoverAccountCode };
+export { PasswordResetCode };

@@ -1,15 +1,15 @@
-import { RecoverAccountCode } from '../components/PasswordResetCodeComponent';
+import { PasswordResetCode } from '../components/PasswordResetCodeComponent';
 
-const recoverAccountCode = () => {
+const RecoverAccountCode = () => {
     return (
         <div>
 
             <main className=''>
-                < RecoverAccountCode />
+                <PasswordResetCode />
             </main>
         </div>
 
     );
 };
 
-export default recoverAccountCode;
+export default RecoverAccountCode;

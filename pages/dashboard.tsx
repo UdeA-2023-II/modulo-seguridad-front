@@ -8,7 +8,7 @@ export default function Dashboard() {
     const backgroundImage = '/images/imagen-landing.jpg';
 
     return (
-        <div className="flex bg-no-repeat bg-green-300">
+        <div className="flex bg-no-repeat">
            <LayoutAuth> 
                 <SidebarComponent />
                 <main
@@ -22,7 +22,6 @@ export default function Dashboard() {
                         backgroundRepeat: 'no-repeat',
                     }}
                 >
-                    <h1>HOLA</h1>
                 </main>
             </LayoutAuth>
         </div>
