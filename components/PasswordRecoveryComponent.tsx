@@ -10,6 +10,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/router';
 import emailjs from '@emailjs/browser'
+import { useDispatch } from 'react-redux';
+import { setCodeVariable } from '../redux/actions';
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -21,8 +23,12 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 const PasswordRecoveryComponent = () => {
+
+  const dispatch = useDispatch();
+
   function generateVerificationCode(): string {
     const code: string = Math.random().toString(36).substring(2, 8).toUpperCase();
+    dispatch(setCodeVariable(code));
     return code;
   }
 

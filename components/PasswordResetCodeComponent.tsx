@@ -9,6 +9,7 @@ import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
 
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
@@ -18,10 +19,14 @@ const AppBar = styled(MuiAppBar, {
         duration: theme.transitions.duration.leavingScreen,
     }),
 }));
-
+interface RootState {
+    codeVariable: string;
+    // ... otros estados ...
+  }
 
 const RecoverAccountCode = () => {
     const valorCodigo = "";
+    const code = useSelector((state:RootState) => state.codeVariable);// Varieble a utilizar
     const router = useRouter();
 
     const handleContinuarClick = () => {
