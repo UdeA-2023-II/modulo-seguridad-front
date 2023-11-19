@@ -12,8 +12,11 @@ export default function Dashboard() {
                 className="w-3/4 bg-cover bg-no-repeat"
                 style={{
                     backgroundImage: `url("${backgroundImage}")`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
                     minHeight: '100vh',
                     maxHeight: '100vh',
+                    backgroundRepeat: 'no-repeat',
                 }}
             >
             </main>
