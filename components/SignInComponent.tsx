@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -10,75 +10,46 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Typography } from '@mui/material';
-import Modal from '@mui/material/Modal';
-import ErrorIcon from '@mui/icons-material/Error';
-import { useRouter } from 'next/router';
-import { useDispatch, useSelector } from 'react-redux';
-import { setSelectedItem } from '../redux/actions';
+
 
 
 const defaultTheme = createTheme();
-interface RootState {
-  selectedItem: string; // Asegúrate de que el tipo coincida con el estado en tu aplicación
-  // ... otros estados ...
-}
 
 const SignIn = () => {
-  const selectedItem = useSelector((state:RootState) => state.selectedItem); // Accede al estado global
-  const dispatch = useDispatch();
-  const router = useRouter();
-  const [showModal, setShowModal] = useState(false);
-  const [error, setError] = useState('');
-  const [role, setRole] = useState('');
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const form = event.target as HTMLFormElement;
-    const email = form.email.value;
-    const password = form.password.value;
+    const user = {
+      password: form.password.value,
+      userName: form.email.value,
+    }
+
 
     try {
-      const response = await fetch('https://6513538b8e505cebc2e9c6bc.mockapi.io/api/v1/users', {
-        method: 'GET',
+
+
+      const requestOptions = {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-      });
+        body: JSON.stringify(user)
+      };
 
-      if (response.ok) {
-        const users = await response.json();
-  
-        const isValidCredentials = users.some((user:any) => {
-          if (user.mail === email && user.password === password) {
-            // Guarda el rol en el estado
-            setRole(user.role);
-            dispatch(setSelectedItem(user.role));
-            console.log('Credenciales correctas');
-            router.push('dashboard');
-            // Aquí puedes redirigir al usuario a la página principal o realizar alguna otra acción
-            return true;
-          }
-          return false;
+      console.log("Credenciales enviadas a Backend: ", requestOptions.body)
+
+      await fetch('https://localhost:8080/api_v1/auth', requestOptions)
+        .then(response => response.json())
+        .then(data => {
+          console.log("Token de inicio de sesión: ", data)
         });
 
-        if (!isValidCredentials) {
-          setError('¡Usuario o contraseña incorrectos, Por favor, inténtelo de nuevo!');
-          setShowModal(true);
-        }
-      } else {
-        console.error('Error al obtener datos de la API');
-      }
     } catch (error) {
-      console.error('Error de red:', error);
+      console.log("Error consultando las credenciales: ", error)
     }
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-    setError('');
-  };
-
+  }
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs" className='content-center'>
@@ -148,94 +119,6 @@ const SignIn = () => {
           </Grid>
         </Box>
 
-        {/* Elemento para mostrar el rol del usuario */}
-        {role && (
-          <Box
-            sx={{
-              marginTop: 2,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            
-          </Box>
-        )}
-
-        {/* Modal */}
-        <Modal
-          open={showModal}
-          onClose={handleCloseModal}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-          rounded-xl
-        >
-          <Box
-            sx={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              bgcolor: '#FFBBBB',
-              boxShadow: 24,
-              alignItems: 'center',
-              display: 'flex',
-              flexDirection: 'column',
-              width: '500px',
-              borderRadius: '20px',
-              p: 4,
-            }}
-          >
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'row',
-                marginBottom: '0',
-                width: '400px',
-                height: '100px',
-              }}
-            >
-              <Box sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                textAlign: 'center',
-                marginBottom: '25px',
-                height: '60px',
-                paddingTop: '7px',
-                margin: '0'
-              }}>
-                <ErrorIcon sx={{ fontSize: '50px', color: '#551818' }}></ErrorIcon>
-              </Box>
-
-              <Box sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                width: '600px',
-              }}
-              >
-                <Typography variant="h6" component="h2" id="modal-modal-title"
-                  sx={{
-                    fontcolor: '#551818'
-                  }}
-                >
-                  Usuario o contraseña incorrectos.
-                </Typography>
-                <Typography variant="h6" component="h2" id="modal-modal-title"
-                  sx={{
-                    fontcolor: '#551818'
-                  }}
-                >
-                  Por favor, inténtelo de nuevo.
-                </Typography>
-              </Box>
-            </Box>
-
-            <Button onClick={handleCloseModal} variant="contained" sx={{ borderRadius: '10px', mt: 2, bgcolor: '#995757', color: 'black', '&:hover': { backgroundColor: '#8E4141', color: 'white' } }}>
-              Aceptar
-            </Button>
-          </Box>
-        </Modal>
       </Container>
     </ThemeProvider >
   );
