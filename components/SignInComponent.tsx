@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import { useState } from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -9,13 +9,21 @@ import Box from '@mui/material/Box';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Typography } from '@mui/material';
-
+import { Modal, Typography } from '@mui/material';
+import ErrorIcon from '@mui/icons-material/Error';
 
 
 const defaultTheme = createTheme();
 
 const SignIn = () => {
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setError('');
+  };
+
+  const [showModal, setShowModal] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -48,6 +56,7 @@ const SignIn = () => {
 
     } catch (error) {
       console.log("Error consultando las credenciales: ", error)
+      setShowModal(true)
     }
   }
   return (
@@ -118,7 +127,79 @@ const SignIn = () => {
             </Grid>
           </Grid>
         </Box>
+        <Modal
+          open={showModal}
+          onClose={handleCloseModal}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+          rounded-xl
+        >
+          <Box
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              bgcolor: '#FFBBBB',
+              boxShadow: 24,
+              alignItems: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              width: '500px',
+              borderRadius: '20px',
+              p: 4,
+            }}
+          >
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                marginBottom: '0',
+                width: '400px',
+                height: '100px',
+              }}
+            >
+              <Box sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                textAlign: 'center',
+                marginBottom: '25px',
+                height: '60px',
+                paddingTop: '7px',
+                margin: '0'
+              }}>
+                <ErrorIcon sx={{ fontSize: '50px', color: '#551818' }}></ErrorIcon>
+              </Box>
 
+              <Box sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                width: '600px',
+              }}
+              >
+                <Typography variant="h6" component="h2" id="modal-modal-title"
+                  sx={{
+                    fontcolor: '#551818'
+                  }}
+                >
+                  Usuario o contraseña incorrectos.
+                </Typography>
+                <Typography variant="h6" component="h2" id="modal-modal-title"
+                  sx={{
+                    fontcolor: '#551818'
+                  }}
+                >
+                  Por favor, inténtelo de nuevo.
+                </Typography>
+              </Box>
+            </Box>
+
+            <Button onClick={handleCloseModal} variant="contained" sx={{ borderRadius: '10px', mt: 2, bgcolor: '#995757', color: 'black', '&:hover': { backgroundColor: '#8E4141', color: 'white' } }}>
+              Aceptar
+            </Button>
+          </Box>
+        </Modal>
       </Container>
     </ThemeProvider >
   );
