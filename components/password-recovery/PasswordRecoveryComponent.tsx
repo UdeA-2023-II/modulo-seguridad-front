@@ -14,7 +14,7 @@ import emailjs from '@emailjs/browser'
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme }) => ({
-  transition: theme.transitions.create(['margin', 'width'], {
+     transition: theme.transitions.create(['margin', 'width'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),

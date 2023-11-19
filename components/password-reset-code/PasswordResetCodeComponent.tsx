@@ -1,3 +1,4 @@
+"use client"
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
@@ -20,6 +21,7 @@ const AppBar = styled(MuiAppBar, {
 
 
 const RecoverAccountCode = () => {
+    const valorCodigo = "";
     const router = useRouter();
 
     const handleContinuarClick = () => {
@@ -66,11 +68,10 @@ const RecoverAccountCode = () => {
                         margin="normal"
                         required
                         fullWidth
-                        id="email"
+                        id="codigo"
                         label="Codigo"
                         name="codigo"
-                        type='number'
-
+                        value={valorCodigo}
                     />
                     <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '10px', marginBottom: '5px' }}>
                         <Button type="submit" variant="contained" style={{ background: 'darkgrey', color: '#555' }}>
