@@ -30,6 +30,9 @@ import SortIcon from '@mui/icons-material/Sort';
 import SendToMobileIcon from '@mui/icons-material/SendToMobile';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
+import TableComponent from './table-history/TableComponent';
+import { Main } from 'next/document';
+import { Container } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -68,6 +71,12 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
+/* const[option, setOption] = React.useState();
+ */
+const content = ((option: any) => {
+  
+});
+
 const SidebarComponent = () => {
   const rol = useSelector((state: RootState) => state.selectedItem); // Variable Global
   const router = useRouter();
@@ -78,14 +87,20 @@ const SidebarComponent = () => {
     setOpen(true);
   };
 
-  const handleTable = () => {
+  /* const handleTable = () => {
     router.push('auditoria-page');;
-  };
+  }; */
 
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  
+  const handleChangeAuditoria = () => {
+    
+  };
+
   return (
+    <>
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
@@ -158,7 +173,7 @@ const SidebarComponent = () => {
         <Divider />
         <List>
           {rol === 'administrador' && (
-            <ListItem disablePadding onClick={handleTable}>
+            <ListItem disablePadding onClick={handleChangeAuditoria}>
               <ListItemButton>
                 <ListItemIcon>
                   <HistoryIcon />
@@ -248,8 +263,13 @@ const SidebarComponent = () => {
           )}
         </List>
       </Drawer>
-
+      
     </Box>
+    <Container className='w-full h-auto  overflow-auto flex flex-col items-center content-center mt-32 ' >
+         {/*  <TableComponent/> */}
+       
+    </Container>
+    </>
   );
 }
 export { SidebarComponent };

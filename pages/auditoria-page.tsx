@@ -5,7 +5,7 @@ const AuditoriaPage = () => {
     return (
         <div>
             <main className=''>
-                {/* <NavBar/> */}
+                {/* <NavBar/>} */}
                 <TableComponent />
             </main>
         </div>
