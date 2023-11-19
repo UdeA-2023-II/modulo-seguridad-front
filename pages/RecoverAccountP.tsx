@@ -1,4 +1,4 @@
-import { PasswordRecoveryComponent } from '../components/password-recovery/PasswordRecoveryComponent'
+import { PasswordRecoveryComponent } from '../components/PasswordRecoveryComponent'
 
 const RecoverAccount = () => {
     return (

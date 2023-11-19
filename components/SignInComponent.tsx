@@ -55,7 +55,6 @@ const SignIn = () => {
             setRole(user.role);
             dispatch(setSelectedItem(user.role));
             console.log('Credenciales correctas');
-            console.log('Rol del usuario:', user.role);
             router.push('dashboard');
             // Aquí puedes redirigir al usuario a la página principal o realizar alguna otra acción
             return true;
