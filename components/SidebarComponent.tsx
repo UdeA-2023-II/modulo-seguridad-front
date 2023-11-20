@@ -189,7 +189,7 @@ const SidebarComponent = () => {
               </ListItemButton>
             </ListItem>
           )}
-            <ListItem disablePadding onClick={() => handleTable("configuracion")}>
+            <ListItem disablePadding onClick={() => handleTable("extra-module-page")}>
               <ListItemButton>
                 <ListItemIcon>
                   <SettingsIcon />
@@ -199,7 +199,7 @@ const SidebarComponent = () => {
             </ListItem>
 
           {rol === 'administrador' && (
-            <ListItem disablePadding onClick={() => handleTable("pqr")}>
+              <ListItem disablePadding onClick={() => handleTable("extra-module-page")}>
               <ListItemButton>
                 <ListItemIcon>
                 <DescriptionIcon />
@@ -209,7 +209,7 @@ const SidebarComponent = () => {
             </ListItem>
           )}
           {rol === 'usuario' && (
-            <ListItem disablePadding onClick={() => handleTable("servicio")}>
+              <ListItem disablePadding onClick={() => handleTable("extra-module-page")}>
               <ListItemButton>
                 <ListItemIcon>
                   <SendToMobileIcon />
@@ -219,7 +219,7 @@ const SidebarComponent = () => {
             </ListItem>
           )}
           {rol === 'socio' && (
-            <ListItem disablePadding onClick={() => handleTable("validar")}>
+              <ListItem disablePadding onClick={() => handleTable("extra-module-page")}>
               <ListItemButton>
                 <ListItemIcon>
                   <TaxiAlertIcon />
@@ -229,7 +229,7 @@ const SidebarComponent = () => {
             </ListItem>
           )}
           {rol === 'administrador' && (
-            <ListItem disablePadding onClick={() => handleTable("socios")}>
+              <ListItem disablePadding onClick={() => handleTable("extra-module-page")}>
               <ListItemButton>
                 <ListItemIcon>
                   <PeopleAltIcon />
@@ -239,7 +239,7 @@ const SidebarComponent = () => {
             </ListItem>
           )}
           {rol !== 'usuario' && (
-            <ListItem disablePadding onClick={() => handleTable("clasificacion")}>
+            <ListItem disablePadding onClick={() => handleTable("extra-module-page")}>
               <ListItemButton>
                 <ListItemIcon>
                   <SortIcon />
@@ -249,7 +249,7 @@ const SidebarComponent = () => {
             </ListItem>
           )}
           {rol === 'administrador' && (
-            <ListItem disablePadding onClick={() => handleTable("financiera")}>
+              <ListItem disablePadding onClick={() => handleTable("extra-module-page")}>
               <ListItemButton>
                 <ListItemIcon>
                   <PaidIcon />
@@ -259,7 +259,7 @@ const SidebarComponent = () => {
             </ListItem>
           )}
           {rol === 'administrador' && (
-            <ListItem disablePadding onClick={() => handleTable("comercial")}>
+              <ListItem disablePadding onClick={() => handleTable("extra-module-page")}>
               <ListItemButton>
                 <ListItemIcon>
                   <SellIcon />
@@ -273,7 +273,7 @@ const SidebarComponent = () => {
               <ListItemIcon>
                 <LogoutIcon/>
               </ListItemIcon>
-              <ListItemText primary="logout" />
+              <ListItemText primary="Logout" />
             </ListItemButton>
           </ListItem>  
         </List>
