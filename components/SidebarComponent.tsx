@@ -79,7 +79,7 @@ const content = ((option: any) => {
   
 });
 
-const SidebarComponent = ({ onSidebarClick }:any) => {
+const SidebarComponent = () => {
   const rol = useSelector((state: RootState) => state.selectedItem); // Variable Global
   const router = useRouter();
   const theme = useTheme();
