@@ -116,6 +116,15 @@ const SidebarComponent = () => {
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
+            sx={{ mr: 2, ...(open && { display: 'none' }) }}
+          >
+            <MenuIcon />
+          </IconButton>
           <Typography variant="h6" noWrap component="div" style={styles.title}>
             SSMU
           </Typography>
