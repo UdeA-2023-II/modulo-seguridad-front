@@ -65,8 +65,8 @@ const SignIn = () => {
           setToken(data)
           if (data.status == 403) {
             setShowModal(true);
-            dispatch(setSelectedItem(data.roles[0]));
           } else {
+            dispatch(setSelectedItem(data.roles[0]));
             router.push('dashboard')
           }
         });
@@ -149,7 +149,7 @@ const SignIn = () => {
           onClose={handleCloseModal}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
-          rounded-xl
+
         >
           <Box
             sx={{
