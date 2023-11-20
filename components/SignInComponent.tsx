@@ -63,7 +63,7 @@ const SignIn = () => {
         .then(response => response.json())
         .then(data => {
           setToken(data)
-          if (token == '' || token == null) {
+          if (data.status == 403) {
             setShowModal(true);
             dispatch(setSelectedItem(data.roles[0]));
           } else {
