@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
+import { SidebarComponent } from '@/components/SidebarComponent';
 
 interface RootState {
   selectedItem: string;
@@ -24,7 +25,11 @@ const LayoutAuth = ({ children }:any) => {
     return null;
   }
 
-  return <>{children}</>; // Renderiza el contenido solo si el usuario está autenticado
+  return (< >
+  <SidebarComponent/>
+  {children}
+  </>)
+  ; // Renderiza el contenido solo si el usuario está autenticado
 };
 
 export default LayoutAuth;
