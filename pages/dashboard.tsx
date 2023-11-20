@@ -17,7 +17,7 @@ const Dashboard = ({ children }:any) => {
   };
 
   return (
-    <div className="flex bg-no-repeat bg-gray-500">
+    <div className="flex bg-no-repeat">
       <LayoutAuth>
         <main
           className=" bg-cover bg-no-repeat w-full h-full flex flex-col items-end "
