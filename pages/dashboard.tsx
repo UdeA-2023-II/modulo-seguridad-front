@@ -17,12 +17,12 @@ const Dashboard = ({ children }:any) => {
   };
 
   return (
-    <div className="flex bg-no-repeat ">
+    <div className="flex bg-no-repeat bg-gray-500">
       <LayoutAuth>
         <main
-          className=" bg-cover bg-no-repeat w-full h-full flex flex-col items-end"
+          className=" bg-cover bg-no-repeat w-full h-full flex flex-col items-end "
           style={{
-           
+            backgroundImage: children ? 'none' : `url(${backgroundImage})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             minHeight: '100vh',
