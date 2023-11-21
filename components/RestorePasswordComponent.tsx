@@ -76,12 +76,14 @@ const RestorePasswordComponent = () => {
                         id="Nuevo contraseña"
                         label="Nuevo contraseña"
                         name="Nuevo contraseña"
+                        type="password"
                         autoComplete="Nuevo contraseña"
                     />
                     <TextField
                         margin="normal"
                         required
                         fullWidth
+                        type="password"
                         id="Vuelva a escribir la contraseña"
                         label="Vuelva a escribir la contraseña"
                         name="Vuelva a escribir la contraseña"

@@ -69,7 +69,6 @@ const PasswordResetCode = () => {
                 boxShadow: 10,
             }}>
                 <form style={{ margin: "20px" }}>
-                    <h1>tu codigo es : {anotherVariable}</h1>
                     <Typography variant='h2'
                         component='h3'
                         fontSize='20px'
